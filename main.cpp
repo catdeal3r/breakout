@@ -1,44 +1,36 @@
 #include <raylib.h>
+#include "objects.hpp"
+
+void main_loop(Ball b)
+{
+    
+    BeginDrawing();
+
+        ClearBackground(RAYWHITE);
+
+        DrawCircle(b.x, b.y, b.radius, b.colour);
+
+    EndDrawing();
+}
 
 int main()
 {
-    // Initialization
-    //--------------------------------------------------------------------------------------
-    const int screenWidth = 800;
-    const int screenHeight = 450;
+    const int screen_w = 1000;
+    const int screen_h = 650;
 
-    InitWindow(screenWidth, screenHeight, "raylib [shapes] example - basic shapes drawing");
+    InitWindow(screen_w, screen_h, "Breakout");
 
-    SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-    //--------------------------------------------------------------------------------------
+    SetTargetFPS(60);
+
+    Ball b = { screen_w / 2, screen_h / 2, 1, 20, BLUE };
 
     // Main game loop
-    while (!WindowShouldClose())    // Detect window close button or ESC key
+    while (!WindowShouldClose())
     {
-        // Update
-        //----------------------------------------------------------------------------------
-        // TODO: Update your variables here
-        //----------------------------------------------------------------------------------
-
-        // Draw
-        //----------------------------------------------------------------------------------
-        BeginDrawing();
-
-            ClearBackground(RAYWHITE);
-
-            // Draw a circle
-            DrawCircle(screenWidth/2, screenHeight/2, 50, BLUE); // Center X, Center Y, Radius, Color
-
-            DrawText("This is a blue circle", 10, 10, 20, DARKGRAY);
-
-        EndDrawing();
-        //----------------------------------------------------------------------------------
+        main_loop(b);
     }
-
-    // De-Initialization
-    //--------------------------------------------------------------------------------------
-    CloseWindow();        // Close window and unload OpenGL context
-    //--------------------------------------------------------------------------------------
+    
+    CloseWindow(); 
 
     return 0;
 }
