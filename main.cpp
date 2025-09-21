@@ -27,9 +27,9 @@ int main()
             ClearBackground(RAYWHITE);
 
             // Draw a circle
-            DrawCircle(screenWidth/2, screenHeight/2, 50, RED); // Center X, Center Y, Radius, Color
+            DrawCircle(screenWidth/2, screenHeight/2, 50, BLUE); // Center X, Center Y, Radius, Color
 
-            DrawText("This is a red circle", 10, 10, 20, DARKGRAY);
+            DrawText("This is a blue circle", 10, 10, 20, DARKGRAY);
 
         EndDrawing();
         //----------------------------------------------------------------------------------
