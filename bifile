@@ -1,4 +1,4 @@
 compiler = "g++"
 compiler_options = "-I $(nix derivation show nixpkgs#raylib | jq -r '.[] | .outputs.out.path')/include -L $(nix derivation show nixpkgs#raylib | jq -r '.[] | .outputs.out.path')/lib -L $(nix derivation show nixpkgs#libGL | jq -r '.[] | .outputs.out.path')/lib -lraylib -lGL"
-files = "main.cpp" "objects.hpp"
+files = "main.cpp" "objects.hpp" "objects.cpp"
 output_file = "main.out"
