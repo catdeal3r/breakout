@@ -5,6 +5,7 @@ void main_loop
 (
     Ball& b,
     Paddle& p,
+    Bricks& br,
     const int screen_w,
     const int screen_h
 )
@@ -15,12 +16,14 @@ void main_loop
 
         DrawCircle(b.x, b.y, b.radius, b.colour);
         DrawRectangle(p.x, p.y, p.width, p.height, p.colour);
+        br.draw_bricks();
 
     EndDrawing();
 
     // Update variables before next draw
     b.move();
     b.check_wall_collisions(screen_w, screen_h);
+    b.check_bricks_collisions(br);
 
     p.check_input_and_move(screen_w, screen_h);
 
@@ -42,10 +45,13 @@ int main()
     Paddle p = Paddle(screen_w / 2 - (200 / 2), screen_h - (25 + 20), 200, 25, RED);
     p.set_accel(8);
 
+    Bricks br;
+    br.setup_bricks();
+
     // Main game loop
     while (!WindowShouldClose())
     {
-        main_loop(b, p, screen_w, screen_h);
+        main_loop(b, p, br, screen_w, screen_h);
     }
     
     CloseWindow(); 
